@@ -1,0 +1,25 @@
+{
+  "name": "trends",
+  "version": "1.0.0",
+  "description": "A public api which allows http requests for google trends.",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.16.3",
+    "google-trends-api": "^4.7.0",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SLandgra/trends.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SLandgra/trends/issues"
+  },
+  "homepage": "https://github.com/SLandgra/trends#readme"
+}
