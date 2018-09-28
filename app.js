@@ -3,9 +3,8 @@ const logger = require('morgan');
 const routes =  require('./routes');
 const cors = require('cors')
 
+app.use(cors());
 app.use('/', routes);
-
-app.use(cors())
 
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
