@@ -3,6 +3,10 @@ const logger = require('morgan');
 const routes =  require('./routes');
 const cors = require('cors')
 
+let server = require('http').Server(app);
+let io = require('socket.io')(server);
+let sockets = require('./sockets/sockets.js')(io)
+
 app.use(cors());
 app.use('/', routes);
 
@@ -22,6 +26,6 @@ app.use(function(err, req, res, next) {
 
 
 const port = process.env.PORT || 3000;
-app.listen(port, ()=>{
+server.listen(port, ()=>{
   console.log('Express started. Listening on port %s', port);
 });

@@ -3,16 +3,9 @@
   "version": "1.0.0",
   "description": "A public api which allows http requests for google trends.",
   "main": "app.js",
-  "dependencies": {
-    "cors": "^2.8.4",
-    "express": "^4.16.3",
-    "google-trends-api": "^4.7.0",
-    "morgan": "^1.9.1"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -23,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/SLandgra/trends/issues"
   },
-  "homepage": "https://github.com/SLandgra/trends#readme"
+  "homepage": "https://github.com/SLandgra/trends#readme",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.16.4",
+    "google-trends-api": "^4.7.0",
+    "morgan": "^1.9.1",
+    "socket.io": "^2.1.1"
+  }
 }
