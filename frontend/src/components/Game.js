@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import TeamView from './TeamView'
 
 class Game extends Component {
   constructor(props){
