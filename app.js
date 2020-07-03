@@ -5,7 +5,7 @@ const cors = require('cors')
 
 let server = require('http').Server(app);
 let io = require('socket.io')(server);
-let sockets = require('./sockets/sockets.js')(io)
+require('./sockets/sockets.js')(io)
 
 app.use(cors());
 app.use('/', routes);

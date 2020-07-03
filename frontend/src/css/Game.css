@@ -1,0 +1,20 @@
+.gameContainer{
+  display: flex;
+  justify-content: space-around;
+  height: 70vh;
+  padding-top: 10vh;
+}
+.chatBox{
+  bottom: 0;
+  width:100%;
+  padding: 2.5vh;
+  height: 50vh;
+}
+.chatMessages{
+  overflow-y: scroll;
+  height: 50%;
+}
+.chatInput{
+  position: absolute;
+  bottom:1vh;
+}

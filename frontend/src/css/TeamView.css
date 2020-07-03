@@ -1,0 +1,12 @@
+.TeamView{
+  height:100%;
+  width:40%;
+}
+.colorBox{
+  border:solid;
+ width: 100%;
+ height:100%;
+ align-items:center;
+ display:flex;
+ justify-content:center;
+}

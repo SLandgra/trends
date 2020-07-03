@@ -51,17 +51,16 @@ class AllRooms extends Component {
   componentDidMount(){
     const that = this;
     const roomSocket = this.state.roomSocket;
-    roomSocket.on('connect', ()=>{
-      roomSocket.on('roomInit', (rooms)=>{
+    roomSocket.on('connect', () => {
+      roomSocket.on('roomInit', (rooms) => {
         that.setState({rooms});
       });
-      roomSocket.on('rooms', (room)=>{
+      roomSocket.on('rooms', (room) => {
         let arr = that.state.rooms;
         arr.push(room);
         that.setState({rooms: arr});
       });
-      roomSocket.on('roomID', (roomID)=>{
-        console.log(roomID)
+      roomSocket.on('roomID', (roomID) => {
         this.props.socket.emit('joinRoom', roomID);
         this.state.roomSocket.disconnect();
         this.props.changePage('game');
@@ -113,8 +112,8 @@ class AllRooms extends Component {
                     <th scope="col">{room.password? "Yes" : 'No'}</th>
                     <th scope="col">{room.spectators === -1 ? "N/A" : room.spectators}</th>
                     <th scope="col">
-                      <button type="button" class="btn btn-primary" onClick = {()=>{this.joinRoom(room)}}>Join Game</button>
-                      <button type="button" class="btn btn-primary" onClick = {()=>{this.spectateRoom(room)}}>Spectate Game</button>
+                      <button type="button" className="btn btn-primary" onClick = {()=>{this.joinRoom(room)}}>Join Game</button>
+                      <button type="button" className="btn btn-primary" onClick = {()=>{this.spectateRoom(room)}}>Spectate Game</button>
                     </th>
                 </tr>)
               })}

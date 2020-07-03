@@ -1,5 +1,6 @@
 let rooms = [];
 let users = 0;
+
 /*
 Room:{
 allPlayers: Boolean
@@ -35,36 +36,37 @@ rooms.findByIdAndUpdateSpectator = (id, joining) => {
   rooms[index] = Object.assign(rooms[index], {spectators: rooms[index].spectators + add});
 }
 
-const sockets = (io)=>{
+const sockets = (io) => {
   const main = io
   .of('/main')
-  .on('connection', (socket)=>{
+  .on('connection', (socket) => {
     users++;
     main.emit('users', users);
-    socket.on('joinRoom', (room)=>{
+    socket.on('joinRoom', (room) => {
       socket.room = room;
       socket.type = "player";
-      socket.join(room);
+      socket.join(room.roomID);
     });
-    socket.on('spectateRoom', (room)=>{
+    socket.on('spectateRoom', (room) => {
       socket.room = room;
       socket.type = "spectator";
       rooms.findByIdAndUpdateSpectator(room.roomID, true);
       socket.join(room)
     })
-    socket.on('leaveRoom', ()=>{
+    socket.on('leaveRoom', () => {
       socket.leave(socket.room);
       socket.room = '';
     });
-    socket.on('disconnect', ()=>{
+    socket.on('disconnect', () => {
       if(socket.room){
         socket.leave(socket.room);
       }
       users--;
       main.emit('users', users);
     })
-    socket.on('chat', (chat)=>{
-      main.in(socket.room).emit('sendChat', chat);
+    socket.on('chat', (chat) => {
+      console.log(socket.room.roomID)
+      main.in(socket.room.roomID).emit('sendChat', chat);
     })
   });
   const roomSocket = io
@@ -81,7 +83,7 @@ const sockets = (io)=>{
       inProgress: false,
       }
       rooms.push(newRoom)
-      socket.emit('roomID', socket.id)
+      socket.emit('roomID', newRoom)
       roomSocket.emit('rooms', newRoom)
     });
   });

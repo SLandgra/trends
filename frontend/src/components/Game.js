@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import TeamView from './TeamView'
-
+import TeamView from './TeamView';
+import '../css/Game.css';
 class Game extends Component {
   constructor(props){
     super(props);
@@ -32,10 +32,24 @@ class Game extends Component {
   render(){
     return(
       <div>
-        <div> In Game.js </div>
-        Chat <input onChange={(e)=>{this.handleChange(e)}} value = {this.state.chatInput} type = "text"/>
-        <button onClick={()=>{this.chatSubmit()}}> Submit </button>
-        <div>{this.state.chat.map((chat, index)=>{return <ul key ={index}>{chat.name}: {chat.msg}</ul>})}</div>
+        <div className='gameContainer'>
+          <TeamView
+          color='red'
+          teamName=''
+          />
+          <TeamView
+          color='blue'
+          teamName=''/>
+        </div>
+        <div className="chatBox">
+          <div className="chatMessages">
+            {this.state.chat.map((chat, index)=>{return <span key ={index}>{chat.name}: {chat.msg} <br></br></span>})}
+          </div>
+          <div className="chatInput">
+            Chat <input onChange={(e)=>{this.handleChange(e)}} value = {this.state.chatInput} type = "text"/>
+            <button onClick={()=>{this.chatSubmit()}}> Submit </button>
+          </div>
+        </div>
       </div>
     )
   }
